@@ -7,8 +7,11 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint",
-    "format": "prettier --write \"./**/*.{ts,js,json,md}\""
+    "style:all": "npm run style:lint && npm run style:prettier",
+    "style:lint": "ng lint",
+    "style:prettier": "prettier --check \"./**/*.{js,jsx,ts,tsx}\"",
+    "make-pretty": "prettier --write '**/*.{js,jsx,ts,tsx}'",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -61,15 +64,5 @@
     "tailwindcss": "^3.0.12",
     "typescript": "~4.5.2"
   },
-  "prettier": "prettier-config-standard",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged --relative"
-    }
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "eslint --fix"
-    ]
-  }
+  "prettier": "prettier-config-standard"
 }
