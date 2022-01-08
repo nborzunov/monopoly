@@ -10,8 +10,7 @@
     "style:all": "npm run style:lint && npm run style:prettier",
     "style:lint": "ng lint",
     "style:prettier": "prettier --check \"./**/*.{js,jsx,ts,tsx}\"",
-    "make-pretty": "prettier --write '**/*.{js,jsx,ts,tsx}'",
-    "prepare": "husky install"
+    "make-pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx}\""
   },
   "private": true,
   "dependencies": {
@@ -51,14 +50,12 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.2.0",
-    "husky": "^7.0.4",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "lint-staged": "^12.1.7",
     "prettier": "^2.5.1",
     "prettier-config-standard": "^4.0.0",
     "tailwindcss": "^3.0.12",
