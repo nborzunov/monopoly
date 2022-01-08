@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "format": "prettier --write \"./**/*.{ts,js,json,md}\""
   },
   "private": true,
   "dependencies": {
@@ -19,6 +20,8 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -55,6 +58,7 @@
     "lint-staged": "^12.1.7",
     "prettier": "^2.5.1",
     "prettier-config-standard": "^4.0.0",
+    "tailwindcss": "^3.0.12",
     "typescript": "~4.5.2"
   },
   "prettier": "prettier-config-standard",
@@ -65,7 +69,7 @@
   },
   "lint-staged": {
     "*.{js,ts}": [
-       "eslint --fix"
+      "eslint --fix"
     ]
   }
 }
