@@ -35,10 +35,18 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: Install dependencies
+      - name: Client Install dependencies
         working-directory: ./client
         run: npm ci
 
-      - name: Run lint
+      - name: Client Run lint
         working-directory: ./client
+        run: npm run style:all
+
+      - name: Server Install dependencies
+        working-directory: ./server
+        run: npm ci
+
+      - name: Server Run lint
+        working-directory: ./server
         run: npm run style:all
