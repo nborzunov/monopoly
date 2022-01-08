@@ -36,7 +36,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install dependencies
+        working-directory: ./client
         run: npm ci
 
       - name: Run lint
+        working-directory: ./client
         run: npm run style:all
