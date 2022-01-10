@@ -32,7 +32,6 @@ export class DialogsService {
         [dialogType]: false
       })
     }
-    console.log(1)
   }
 
   toggle(dialogType: DialogsTypes) {
