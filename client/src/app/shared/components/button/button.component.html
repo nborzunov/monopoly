@@ -1,0 +1,10 @@
+<button [class]="'rounded-lg text-lg  px-6 py-2 duration-200 ' + class"
+        [ngClass]="{
+    'text-white bg-green-600 hover:bg-green-500': backgroundColor === 'primary',
+    'text-gray-800  bg-none hover:bg-gray-100': backgroundColor === 'none',
+    'border border-gray-900': variant === 'outline'
+  }">
+  <div class="flex items-center text-center justify-center">
+    <ng-content></ng-content>
+  </div>
+</button>

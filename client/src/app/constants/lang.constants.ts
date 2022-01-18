@@ -19,7 +19,20 @@ export const lang = {
       SOCIALS: 'Соцсети',
       FOLLOW_US:
         'Подписывайтесь на Монополию в соцсетях, чтобы быть в курсе обновлений игры.',
-      COPYRIGHT: '2022 Monopoly. Все Права Защищены.'
+      COPYRIGHT: '2022 Monopoly. Все Права Защищены.',
+
+      // Auth dialog
+      AUTHORIZATION: 'Авторизация',
+      CHOOSE_AUTHORIZATION_METHOD: 'Выберите способ авторизации:',
+      GOOGLE: 'Google',
+      VKONTAKTE: 'ВКонтакте',
+
+      // Header constants
+      YOU_ARE_SIGNED_AS: 'Вы вошли как',
+      ACCOUNT_SETTINGS: 'Настройки аккаунта',
+      SUPPORT: 'Поддержка',
+      NEW_FEATURES: 'Новые возможности (скоро)',
+      SIGN_OUT: 'Выйти'
     }
   }
 }
