@@ -10,21 +10,25 @@ export class UsersService {
     private usersRepository: typeof User,
     @Inject(forwardRef(() => AuthService))
     private authService: AuthService
-  ) {
-  }
+  ) {}
 
   async getUserByEmail(email: string, apiSource: API_SOURCE) {
-    const user = await this.usersRepository.findOne({ where: { email, apiSource }, include: { all: true } })
-    
+    const user = await this.usersRepository.findOne({
+      where: { email, apiSource },
+      include: { all: true }
+    })
+
     return user
   }
 
   async createUser(email: string, apiSource: API_SOURCE) {
-    let newUser = await this.usersRepository.create({ email: email, apiSource: apiSource })
-    
+    const newUser = await this.usersRepository.create({
+      email: email,
+      apiSource: apiSource
+    })
+
     return newUser
   }
-
 
   async validate(authToken: string) {
     return this.authService.validate(authToken)

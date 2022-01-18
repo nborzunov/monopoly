@@ -1,13 +1,11 @@
-import {
-  Injectable
-} from '@nestjs/common'
-import axios from 'axios';
-import { serialize } from 'src/utils/serialize';
+import { Injectable } from '@nestjs/common'
+import axios from 'axios'
+import { serialize } from 'src/utils/serialize'
 
 @Injectable()
 export class GoogleApiService {
   getGoogleAuthURL() {
-    const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
+    const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth'
     const options = {
       redirect_uri: `http://localhost:7000/google/redirect`,
       client_id: process.env.OAUTH_CLIENT_ID,
@@ -18,25 +16,20 @@ export class GoogleApiService {
         'https://www.googleapis.com/auth/userinfo.profile',
         'https://www.googleapis.com/auth/userinfo.email'
       ].join(' ')
-    };
+    }
 
-    return `${rootUrl}?${serialize(options)}`;
+    return `${rootUrl}?${serialize(options)}`
   }
 
-  getTokens({
-    code,
-    clientId,
-    clientSecret,
-    redirectUri
-  }) {
-    const url = 'https://oauth2.googleapis.com/token';
+  getTokens({ code, clientId, clientSecret, redirectUri }) {
+    const url = 'https://oauth2.googleapis.com/token'
     const values = {
       code,
       client_id: clientId,
       client_secret: clientSecret,
       redirect_uri: redirectUri,
       grant_type: 'authorization_code'
-    };
+    }
     return axios
       .post(url, serialize(values), {
         headers: {
@@ -45,8 +38,8 @@ export class GoogleApiService {
       })
       .then((res) => res.data)
       .catch((error) => {
-        console.error('Failed to fetch auth tokens');
-        throw new Error(error.message);
-      });
+        console.error('Failed to fetch auth tokens')
+        throw new Error(error.message)
+      })
   }
 }
