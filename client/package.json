@@ -3,14 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "style:all": "npm run style:lint && npm run style:prettier",
     "style:lint": "ng lint",
     "style:prettier": "prettier --check \"./**/*.{js,jsx,ts,tsx}\"",
-    "make-pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx}\""
+    "make-pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,html}\""
   },
   "private": true,
   "dependencies": {
@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
     "autoprefixer": "^10.4.2",
+    "headlessui-angular": "^0.0.5",
+    "ngx-cookie-service": "^13.1.2",
     "postcss": "^8.4.5",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

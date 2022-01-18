@@ -1,15 +1,9 @@
-import {
-  animate,
-  animateChild,
-  query,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations'
-import { Component, Input, OnInit } from '@angular/core'
+import { animate, style, transition, trigger } from '@angular/animations'
+import { Component } from '@angular/core'
 import { currentLang, lang } from 'app/constants/lang.constants'
-import { DialogsTypes, initialDialogsState } from '../dialogs.const'
+import { ApiService } from 'app/shared/services/api.service'
+import { AuthService } from 'app/shared/services/auth.service'
+import { DialogsTypes } from '../dialogs.const'
 import { DialogsService } from '../dialogs.service'
 import { DialogsState } from '../dialogs.types'
 
@@ -30,30 +24,33 @@ import { DialogsState } from '../dialogs.types'
     ])
   ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   lang = lang[currentLang]
 
   show: boolean = false
   dialogType: DialogsTypes = DialogsTypes.LOGIN
 
-  constructor(private dialogsService: DialogsService) {
+  constructor(
+    private dialogsService: DialogsService,
+    private authService: AuthService
+  ) {
     dialogsService.$state.subscribe((state: DialogsState) => {
       this.show = state[this.dialogType]
     })
   }
 
-  ngOnInit(): void {}
-
   closeDialog(e: any) {
-
     e.stopPropagation()
     e.preventDefault()
 
     if (e?.target?.id === 'modal' || e?.currentTarget.id === 'close-button') {
       this.dialogsService.close(this.dialogType)
-      return
     }
 
     // this.dialogsService.close(this.dialogType)
+  }
+
+  getGoogleAuthUrl() {
+    window.location.href = 'http://localhost:7000/google'
   }
 }

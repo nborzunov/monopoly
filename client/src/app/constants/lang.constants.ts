@@ -25,7 +25,14 @@ export const lang = {
       AUTHORIZATION: 'Авторизация',
       CHOOSE_AUTHORIZATION_METHOD: 'Выберите способ авторизации:',
       GOOGLE: 'Google',
-      VKONTAKTE: 'ВКонтакте'
+      VKONTAKTE: 'ВКонтакте',
+
+      // Header constants
+      YOU_ARE_SIGNED_AS: 'Вы вошли как',
+      ACCOUNT_SETTINGS: 'Настройки аккаунта',
+      SUPPORT: 'Поддержка',
+      NEW_FEATURES: 'Новые возможности (скоро)',
+      SIGN_OUT: 'Выйти'
     }
   }
 }

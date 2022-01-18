@@ -6,8 +6,10 @@ import { AppComponent } from './app.component'
 import { CoreModule } from 'app/core/core.module'
 import { DialogsModule } from './dialogs/dialogs.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { PagesModule } from './pages/pages.module';
+import { PagesModule } from './pages/pages.module'
 import { SharedModule } from './shared/shared.module'
+import { HttpClientModule } from '@angular/common/http'
+import { ApiService } from './shared/services/api.service'
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,9 +20,9 @@ import { SharedModule } from './shared/shared.module'
     CoreModule,
     DialogsModule,
     PagesModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

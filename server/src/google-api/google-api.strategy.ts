@@ -13,6 +13,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       clientID: process.env.OAUTH_CLIENT_ID,
       clientSecret: process.env.OAUTH_CLIENT_SECRET,
       callbackURL: 'http://localhost:7000/google/redirect',
+      userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
       scope: ['email', 'profile']
     })
   }
@@ -24,6 +25,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     done: VerifyCallback
   ): Promise<any> {
     const { name, emails, photos } = profile
+        console.log(profile)
     const user = {
       email: emails[0].value,
       firstName: name.givenName,

@@ -16,8 +16,9 @@ export class DialogsService {
   get state() {
     return this.$state.getValue()
   }
+
   open(dialogType: DialogsTypes) {
-    if (this.state.hasOwnProperty(dialogType)) {
+    if (Object.prototype.hasOwnProperty.call(this.state, dialogType)) {
       this.$state.next({
         ...this.state,
         [dialogType]: true
@@ -26,7 +27,7 @@ export class DialogsService {
   }
 
   close(dialogType: DialogsTypes) {
-    if (this.state.hasOwnProperty(dialogType)) {
+    if (Object.prototype.hasOwnProperty.call(this.state, dialogType)) {
       this.$state.next({
         ...this.state,
         [dialogType]: false
@@ -35,7 +36,7 @@ export class DialogsService {
   }
 
   toggle(dialogType: DialogsTypes) {
-    if (this.state.hasOwnProperty(dialogType)) {
+    if (Object.prototype.hasOwnProperty.call(this.state, dialogType)) {
       this.$state.next({
         ...this.state,
         [dialogType]: !this.state[dialogType]
