@@ -1,9 +1,9 @@
 <main class="min-h-screen bg-gray-100 flex justify-center">
-  <section class="w-full min-h-screen flex flex-col justify-between">
-    <div class="h-full">
+  <section class="w-full flex flex-col justify-between">
+    <div class="pt-4">
       <app-header></app-header>
 
-      <div class="m-4 mx-auto container max-w-5xl bg-white h-full">
+      <div class="m-4 mx-auto container max-w-5xl bg-white min-h-max">
         <router-outlet></router-outlet>
       </div>
     </div>
@@ -11,5 +11,3 @@
     <app-footer></app-footer>
   </section>
 </main>
-
-<dialog-login></dialog-login>

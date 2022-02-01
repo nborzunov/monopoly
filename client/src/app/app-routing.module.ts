@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { RulesComponent } from './pages/rules/rules.component'
+import { SearchPageComponent } from './search/components/search-page/search-page.component'
 
 const routes: Routes = [
   {
-    path: 'rules',
-    component: RulesComponent
+    path: 'search',
+    component: SearchPageComponent
   }
 ]
 

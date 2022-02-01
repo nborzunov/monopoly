@@ -1,0 +1,74 @@
+<div *blockUI="'search-page'" class="h-full">
+  <header
+    class="flex items-baseline justify-between p-4 border-b-2 border-b-gray-100"
+  >
+    <div class="text-gray-700 font-semibold text-xl">
+      {{ lang.labels.WAITING_FOR_GAME }}
+    </div>
+    <shared-button backgroundColor="primary" (click)="openCreateGameDialog()">
+      {{ lang.labels.CREATE_GAME }}
+    </shared-button>
+  </header>
+  <main class="min-h-[600px] border-b-2 border-b-gray-100">
+    <section *ngIf="!results" class="p-4">
+      <h1 class="text-gray-500 font-semibold text-xl text-center">
+        {{ lang.messages.NO_EXISTING_GAMES }}
+      </h1>
+    </section>
+    <section *ngIf="!isLoading && results">
+      <div
+        *ngFor="let game of results"
+        class="border-b-2 border-b-gray-100 p-4"
+      >
+        <header class="p-2">
+          <span
+            class="px-3 text-lg py-2 rounded-lg text-white font-semibold"
+            *ngIf="game.options.gameMode"
+            [ngClass]="gameModeColors[game.options.gameMode]"
+          >
+            {{
+              lang.labels.gameModeLabels[game.options.gameMode] ||
+                lang.labels.NA
+            }}
+          </span>
+        </header>
+        <div class="flex w-full my-4">
+          <div
+            *ngFor="let player of game.players"
+            class="flex flex-col items-center w-1/5"
+          >
+            <img
+              class="w-28 h-28 rounded-full"
+              [src]="player.image || 'assets/stubs/no-profile-photo.jpg'"
+            />
+            <a href="#" class="m-2">
+              <div class="text-xl hover:underline">
+                {{ player.name || lang.labels.NA }}
+              </div>
+            </a>
+          </div>
+          <div
+            *ngFor="
+              let additionalPlayer of createRange(
+                game.options.playersLimit - game.players.length
+              )
+            "
+            class="w-1/5"
+          >
+            <a
+              href="#"
+              class="flex flex-col justify-center items-center h-40 bg-transparent hover:bg-gray-50 rounded-lg duration-200"
+            >
+              <div class="">
+                <span class="material-icons text-7xl text-gray-500">add</span>
+              </div>
+              <div class="text-lg">
+                {{ lang.labels.CONNECT_TO_GAME }}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
