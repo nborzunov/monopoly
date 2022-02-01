@@ -1,5 +1,4 @@
-<button
-  [ngClass]="{
+<button [ngClass]="{
     'text-white bg-green-600 hover:bg-green-500 drop-shadow-lg':
       backgroundColor === 'primary',
     'text-gray-800  bg-none hover:bg-gray-100': backgroundColor === 'none',
@@ -7,8 +6,7 @@
     'rounded-lg text-lg  px-6 py-2 ': size === 'md',
     'rounded-md text-md  px-3 py-1 ': size === 'sm'
   }"
-  [class]="'duration-200 width-full ' + class"
->
+        [class]="'duration-200 width-full ' + class">
   <div class="flex items-center text-center justify-center">
     <ng-content></ng-content>
   </div>

@@ -15,3 +15,10 @@ input:checked + .toggle-bg {
 input:disabled + .toggle-bg {
   @apply opacity-60;
 }
+
+.player-limit-control {
+    @apply text-white font-semibold bg-gray-300 duration-200 min-w-[24px] p-1 w-auto rounded-md align-middle mx-[2px] hover:opacity-80 disabled:text-gray-700 disabled:cursor-not-allowed;
+    &--active {
+        @apply bg-green-500;
+    }
+}
