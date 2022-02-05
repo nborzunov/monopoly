@@ -1,11 +1,10 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { gameModeColors } from 'app/constants/colors.constants'
 import { currentLang, lang } from 'app/constants/lang.constants'
 import { CREATE_GAME_DIALOG_DATA } from 'app/constants/tokens'
 import { DialogService } from 'app/core/services/dialog.service'
 import { CreateGameDialogComponent } from 'app/search/dialogs/create-game-dialog/create-game-dialog.component'
 import createRange from 'app/shared/utils/createRange'
-import { GAME_MODES } from 'app/types/enums'
 import { Game } from 'app/types/types'
 import { BlockUI, NgBlockUI } from 'ng-block-ui'
 

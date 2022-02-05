@@ -3,6 +3,10 @@
   @apply absolute top-0.5 left-0.5 bg-white border border-gray-300 rounded-full h-5 w-5 transition shadow-sm;
 }
 
+.toggle-bg {
+  @apply bg-gray-200 border-2 border-gray-200 h-6 w-11 rounded-full;
+}
+
 input:checked + .toggle-bg:after {
   transform: translateX(100%);
   @apply border-white;
@@ -13,7 +17,7 @@ input:checked + .toggle-bg {
 }
 
 input:disabled + .toggle-bg {
-  @apply opacity-60;
+  @apply opacity-60 cursor-auto;
 }
 
 .player-limit-control {
