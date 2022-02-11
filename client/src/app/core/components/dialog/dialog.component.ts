@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { DialogRef } from 'app/core/services/dialog-ref'
 import { DialogService } from 'app/core/services/dialog.service'
 import { DialogData } from 'app/types/dialogs.types'
 
@@ -10,7 +11,10 @@ export class DialogComponent implements OnInit {
   show: boolean = true
   dialogData!: DialogData
 
-  constructor(private dialogService: DialogService) {}
+  constructor(
+    private dialogRef: DialogRef,
+    private dialogService: DialogService
+  ) {}
 
   ngOnInit(): void {
     if (this.dialogData) {
@@ -22,6 +26,6 @@ export class DialogComponent implements OnInit {
 
   closeDialog() {
     this.show = false
-    this.dialogService.close()
+    this.dialogRef.close()
   }
 }

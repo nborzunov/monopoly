@@ -10,8 +10,8 @@ import { ConfigModule } from '@nestjs/config'
 import { DatabaseModule } from './database/database.module'
 import { GoogleApiModule } from './google-api/google-api.module'
 import { AuthModule } from './auth/auth.module'
-import { AuthMiddleware } from './auth/auth.middleware'
 import { GoogleApiMiddleware } from './google-api/google-api.middleware'
+import { GamesModule } from './games/games.module'
 
 @Module({
   imports: [
@@ -21,7 +21,8 @@ import { GoogleApiMiddleware } from './google-api/google-api.middleware'
     DatabaseModule,
     UsersModule,
     GoogleApiModule,
-    AuthModule
+    AuthModule,
+    GamesModule
   ],
   controllers: [],
   providers: []

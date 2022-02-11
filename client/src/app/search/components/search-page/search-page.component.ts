@@ -1,9 +1,15 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { gameModeColors } from 'app/constants/colors.constants'
 import { currentLang, lang } from 'app/constants/lang.constants'
-import { CREATE_GAME_DIALOG_DATA } from 'app/constants/tokens'
+import {
+  CREATE_GAME_DIALOG_DATA,
+  LEAVE_GAME_DIALOG_DATA
+} from 'app/constants/tokens'
 import { DialogService } from 'app/core/services/dialog.service'
+import { GamesService } from 'app/core/services/games.service'
 import { CreateGameDialogComponent } from 'app/search/dialogs/create-game-dialog/create-game-dialog.component'
+import { LeaveGameDialogComponent } from 'app/search/dialogs/leave-game-dialog/leave-game-dialog.component'
+import { AuthService } from 'app/shared/services/auth.service'
 import createRange from 'app/shared/utils/createRange'
 import { Game } from 'app/types/types'
 import { BlockUI, NgBlockUI } from 'ng-block-ui'
@@ -13,20 +19,63 @@ import { BlockUI, NgBlockUI } from 'ng-block-ui'
   templateUrl: './search-page.component.html',
   styleUrls: ['./search-page.component.scss']
 })
-export class SearchPageComponent implements OnInit {
+export class SearchPageComponent implements OnInit, OnDestroy {
   lang = lang[currentLang]
   isLoading: boolean = false
   results: Game[] = []
   gameModeColors = gameModeColors
+  currentUser: any
 
   createRange = createRange
 
   @BlockUI('search-page') blockUI!: NgBlockUI
 
-  constructor(private dialogService: DialogService) {}
+  constructor(
+    private dialogService: DialogService,
+    private gamesService: GamesService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.loadData()
+    this.gamesService.connect()
+
+    this.gamesService.getCurrentGames()
+
+    this.gamesService.onGetCurrentGames().subscribe((data: any) => {
+      this.results = data
+    })
+
+    this.authService.$user.subscribe((user) => {
+      this.currentUser = user
+    })
+
+    this.gamesService.onAskLeaveGame().subscribe((data: any) => {
+      switch (data.type) {
+        case 'leaveGame':
+          this.openLeaveGameDialog({
+            ...data,
+            run: () => this.gamesService.leaveGame(data.gameId, true)
+          })
+          break
+        case 'connectGame':
+          this.openLeaveGameDialog({
+            ...data,
+            run: () => this.gamesService.connectToGame(data.gameId, true)
+          })
+          break
+        case 'createGame':
+          this.openLeaveGameDialog({
+            ...data,
+            run: () => this.gamesService.createGame(data.game, true)
+          })
+          break
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.gamesService.disconnect()
   }
 
   loadData() {
@@ -34,57 +83,7 @@ export class SearchPageComponent implements OnInit {
     this.blockUI.start()
 
     setTimeout(() => {
-      this.results = [
-        {
-          options: {
-            gameMode: 'QUICK_GAME',
-            playersLimit: 4
-          },
-          players: [
-            {
-              id: '1',
-              image: 'https://picsum.photos/400/500',
-              name: 'Андрей'
-            }
-          ]
-        },
-        {
-          options: {
-            gameMode: 'RANKED_GAME',
-            playersLimit: 5
-          },
-          players: [
-            {
-              id: '1',
-              image: 'https://picsum.photos/200/300',
-              name: 'Александр'
-            },
-            {
-              id: '1',
-              image: null,
-              name: 'Николай'
-            },
-            {
-              id: '1',
-              image: 'https://picsum.photos/300/400',
-              name: 'Елизавета'
-            }
-          ]
-        },
-        {
-          options: {
-            gameMode: 'CASUAL_GAME',
-            playersLimit: 3
-          },
-          players: [
-            {
-              id: '1',
-              image: null,
-              name: 'Максим'
-            }
-          ]
-        }
-      ]
+      this.gamesService.getCurrentGames()
 
       this.isLoading = false
       this.blockUI.stop()
@@ -95,9 +94,32 @@ export class SearchPageComponent implements OnInit {
     this.dialogService.open(
       CreateGameDialogComponent,
       {
-        hasBackdrop: true
+        config: {
+          hasBackdrop: true
+        }
       },
       CREATE_GAME_DIALOG_DATA
     )
+  }
+
+  connectToGame(gameId: string) {
+    this.gamesService.connectToGame(gameId)
+  }
+
+  openLeaveGameDialog(data: any) {
+    this.dialogService.open(
+      LeaveGameDialogComponent,
+      {
+        config: {
+          hasBackdrop: true
+        }
+      },
+      LEAVE_GAME_DIALOG_DATA,
+      data
+    )
+  }
+
+  leaveGame(gameId: string) {
+    return this.gamesService.leaveGame(gameId)
   }
 }

@@ -11,7 +11,8 @@ export const databaseProviders = [
         port: Number(process.env.POSTGRES_PORT),
         username: process.env.POSTGRES_USERNAME,
         password: process.env.POSTGRES_PASSWORD,
-        database: process.env.POSTGRES_DATABASE
+        database: process.env.POSTGRES_DATABASE,
+        logging: false
       })
       sequelize.addModels([User])
       await sequelize.sync()

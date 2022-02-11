@@ -31,6 +31,10 @@ export class AuthService {
   async validate(authToken: string) {
     const userData = this.jwtService.decode(authToken)
 
+    if (!authToken) {
+      return null
+    }
+
     if (typeof userData !== 'string' && userData.user) {
       const user = await this.usersService.getUserByEmail(
         userData.user.email,

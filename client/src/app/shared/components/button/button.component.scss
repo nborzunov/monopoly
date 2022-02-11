@@ -1,0 +1,32 @@
+.button {
+    @apply duration-200;
+    &.transparent {
+        @apply text-gray-800  bg-none hover:bg-gray-100;
+    }
+
+    &.filled {
+        &.primary {
+            @apply bg-green-600 hover:bg-green-500 drop-shadow-lg text-white;
+        }
+
+        &.danger {
+            @apply bg-red-500 hover:bg-red-400 text-white;
+        }
+    }
+
+    &.outline {
+        @apply border-gray-900 border-2 outline-none;
+
+        &.none {
+            @apply text-gray-800  bg-none hover:bg-gray-100;
+        }
+    }
+
+    &.sm {
+        @apply rounded-md text-base  px-3 py-1;
+    }
+
+    &.md {
+        @apply rounded-lg text-lg  px-6 py-2;
+    }
+}

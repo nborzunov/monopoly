@@ -1,4 +1,3 @@
-import { ArrayType } from '@angular/compiler'
 import { Component, Inject, Optional } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { modalAnimation } from 'app/constants/animations.constants'
@@ -7,7 +6,9 @@ import { GameModes, PLAYER_LIMITS } from 'app/constants/game.constants'
 import { currentLang, lang } from 'app/constants/lang.constants'
 import { CREATE_GAME_DIALOG_DATA } from 'app/constants/tokens'
 import { DialogComponent } from 'app/core/components/dialog/dialog.component'
+import { DialogRef } from 'app/core/services/dialog-ref'
 import { DialogService } from 'app/core/services/dialog.service'
+import { GamesService } from 'app/core/services/games.service'
 import { DialogData } from 'app/types/dialogs.types'
 
 @Component({
@@ -26,17 +27,26 @@ export class CreateGameDialogComponent extends DialogComponent {
   casualGameFormGroup!: FormGroup
 
   constructor(
+    dialogRef: DialogRef,
     dialogService: DialogService,
     @Optional()
     @Inject(CREATE_GAME_DIALOG_DATA)
-    public override dialogData: DialogData
+    public override dialogData: DialogData,
+    public gamesService: GamesService
   ) {
-    super(dialogService)
+    super(dialogRef, dialogService)
 
     this.casualGameFormGroup = new FormGroup({
       playersLimit: new FormControl(this.playerLimits[0]),
       roomPrivate: new FormControl({ value: false, disabled: true }),
       roomAutoStart: new FormControl({ value: true, disabled: true })
+    })
+
+    this.gamesService.onSuccessCreateGame().subscribe(() => {
+      this.closeDialog()
+    })
+    this.gamesService.onAskLeaveGame().subscribe(() => {
+      this.closeDialog()
     })
   }
 
@@ -50,5 +60,16 @@ export class CreateGameDialogComponent extends DialogComponent {
 
   get playersLimit() {
     return this.casualGameFormGroup.get('playersLimit')?.value
+  }
+
+  createGame() {
+    const gameData = {
+      gameMode: this.selectedGameMode,
+      playersLimit: this.casualGameFormGroup.value.playersLimit,
+      roomPrivate: this.casualGameFormGroup.value?.roomPrivate || false,
+      roomAutoStart: this.casualGameFormGroup.value?.roomAutoStart || true
+    }
+
+    this.gamesService.createGame(gameData)
   }
 }

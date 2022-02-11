@@ -9,6 +9,10 @@ import { HttpClientModule } from '@angular/common/http'
 import { RouterModule } from '@angular/router'
 import { BlockUIModule } from 'ng-block-ui'
 import { SearchModule } from './search/search.module'
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io'
+import { CookieService } from 'ngx-cookie-service'
+
+const config: SocketIoConfig = { url: 'http://localhost:80', options: {} }
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,8 +25,10 @@ import { SearchModule } from './search/search.module'
     HttpClientModule,
     RouterModule,
     BlockUIModule.forRoot({}),
-    SearchModule
+    SearchModule,
+    SocketIoModule.forRoot(config)
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [CookieService]
 })
 export class AppModule {}

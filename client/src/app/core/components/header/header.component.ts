@@ -29,7 +29,9 @@ export class HeaderComponent {
   openLoginDialog() {
     this.dialogService.open(
       LoginComponent,
-      { hasBackdrop: true },
+      {
+        config: { hasBackdrop: true }
+      },
       LOGIN_DIALOG_DATA
     )
   }

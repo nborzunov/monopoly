@@ -85,7 +85,10 @@ export const lang = {
       ROOM_SETTINGS: 'Настройки комнаты',
       ROOM_SETTINGS_PRIVATE: 'Приватная комната',
       ROOM_SETTINGS_AUTOSTART: 'Автостарт игры',
-      CREATE_ROOM: 'Создать комнату'
+      CREATE_ROOM: 'Создать комнату',
+      LEAVE_GAME: 'Покинуть игру',
+      LEAVE: 'Покинуть',
+      CLOSE: 'Закрыть'
     },
     messages: {
       NO_EXISTING_GAMES:

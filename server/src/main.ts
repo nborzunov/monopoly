@@ -1,10 +1,10 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
 import * as cookieParser from 'cookie-parser'
-import { AuthMiddleware } from './auth/auth.middleware'
+import { SocketAdapter } from './utils/adapter'
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
+  const app = await NestFactory.create(AppModule, { cors: true })
 
   app.enableCors({
     origin: '*',
@@ -12,6 +12,8 @@ async function bootstrap() {
     preflightContinue: false,
     optionsSuccessStatus: 204
   })
+
+  app.useWebSocketAdapter(new SocketAdapter(app))
 
   app.use(cookieParser())
 

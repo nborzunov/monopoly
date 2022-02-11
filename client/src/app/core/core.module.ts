@@ -8,6 +8,8 @@ import { RouterModule } from '@angular/router'
 import { OverlayModule } from '@angular/cdk/overlay'
 import { DialogComponent } from './components/dialog/dialog.component'
 import { MatMenuModule } from '@angular/material/menu'
+import { GamesService } from './services/games.service'
+import { DialogRef } from './services/dialog-ref'
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, DialogComponent],
@@ -19,6 +21,7 @@ import { MatMenuModule } from '@angular/material/menu'
     RouterModule,
     OverlayModule,
     MatMenuModule
-  ]
+  ],
+  providers: [GamesService, DialogRef]
 })
 export class CoreModule {}
