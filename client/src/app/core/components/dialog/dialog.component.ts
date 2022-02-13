@@ -1,31 +1,29 @@
-import { Component, OnInit } from '@angular/core'
-import { DialogRef } from 'app/core/services/dialog-ref'
-import { DialogService } from 'app/core/services/dialog.service'
-import { DialogData } from 'app/types/dialogs.types'
+import type { OnInit } from "@angular/core"
+import { Component } from "@angular/core"
+import type { DialogRef } from "app/core/services/dialog-ref"
+import type { DialogService } from "app/core/services/dialog.service"
+import type { DialogData } from "app/types/dialogs.types"
 
 @Component({
-  selector: 'app-dialog',
-  template: ''
+	selector: "app-dialog",
+	template: "",
 })
 export class DialogComponent implements OnInit {
-  show: boolean = true
-  dialogData!: DialogData
+	show = true
+	dialogData!: DialogData
 
-  constructor(
-    private dialogRef: DialogRef,
-    private dialogService: DialogService
-  ) {}
+	constructor(private dialogRef: DialogRef, private dialogService: DialogService) {}
 
-  ngOnInit(): void {
-    if (this.dialogData) {
-      this.dialogData.outsidePointerEvents.subscribe((event: Event) => {
-        this.closeDialog()
-      })
-    }
-  }
+	ngOnInit(): void {
+		if (this.dialogData) {
+			this.dialogData.outsidePointerEvents.subscribe(() => {
+				this.closeDialog()
+			})
+		}
+	}
 
-  closeDialog() {
-    this.show = false
-    this.dialogRef.close()
-  }
+	closeDialog() {
+		this.show = false
+		this.dialogRef.close()
+	}
 }

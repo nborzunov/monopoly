@@ -39,14 +39,15 @@ jobs:
         working-directory: ./client
         run: npm ci
 
-      - name: Client Run lint
+      - name: Client Install dependencies
         working-directory: ./client
-        run: npm run style:all
+        run: npm ci
 
       - name: Server Install dependencies
         working-directory: ./server
         run: npm ci
 
-      - name: Server Run lint
-        working-directory: ./server
-        run: npm run style:all
+
+      - name: Server Install dependencies
+        run: npm app:all
+

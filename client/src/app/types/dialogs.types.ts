@@ -1,10 +1,10 @@
-import { Subject } from 'rxjs'
+import type { Subject } from "rxjs"
 
 export interface DialogData {
-  outsidePointerEvents: Subject<Event>
+	outsidePointerEvents: Subject<Event>
 }
 
 export interface LeaveGameDialogData extends DialogData {
-  gameId: string
-  run: () => void
+	gameId: string
+	run: () => void
 }

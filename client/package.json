@@ -7,10 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "style:all": "npm run style:lint && npm run style:prettier",
-    "style:lint": "ng lint",
-    "style:prettier": "prettier --check \"./**/*.{js,jsx,ts,tsx}\"",
-    "make-pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx}\""
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -37,7 +34,7 @@
     "@angular-devkit/build-angular": "~13.1.2",
     "@angular-eslint/builder": "13.0.1",
     "@angular-eslint/eslint-plugin": "13.0.1",
-    "@angular-eslint/eslint-plugin-template": "13.0.1",
+    "@angular-eslint/eslint-plugin-template": "^13.0.1",
     "@angular-eslint/schematics": "13.0.1",
     "@angular-eslint/template-parser": "13.0.1",
     "@angular/cli": "~13.1.2",

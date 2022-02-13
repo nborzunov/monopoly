@@ -1,4 +1,4 @@
 export enum API_SOURCE {
-  GOOGLE = 'GOOGLE',
-  VK = 'VK'
+	GOOGLE = "GOOGLE",
+	VK = "VK",
 }

@@ -1,8 +1,8 @@
-import { User } from './users.model'
+import { User } from "./users.model"
 
 export const usersProviders = [
-  {
-    provide: 'USERS_REPOSITORY',
-    useValue: User
-  }
+	{
+		provide: "USERS_REPOSITORY",
+		useValue: User,
+	},
 ]

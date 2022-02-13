@@ -1,6 +1,7 @@
-import { OverlayRef } from '@angular/cdk/overlay'
-import { Injectable } from '@angular/core'
-import { Subject, Observable } from 'rxjs'
+import type { OverlayRef } from "@angular/cdk/overlay"
+import { Injectable } from "@angular/core"
+import type { Observable } from "rxjs"
+import { Subject } from "rxjs"
 
 /**
  * A reference to the dialog itself.
@@ -8,23 +9,23 @@ import { Subject, Observable } from 'rxjs'
  */
 @Injectable()
 export class DialogRef {
-  private afterClosedSubject = new Subject<any>()
+	private afterClosedSubject = new Subject<any>()
 
-  constructor(private overlayRef: OverlayRef) {}
+	constructor(private overlayRef: OverlayRef) {}
 
-  /**
-   * Closes the overlay. You can optionally provide a result.
-   */
-  public close(result?: any) {
-    this.overlayRef.dispose()
-    this.afterClosedSubject.next(result)
-    this.afterClosedSubject.complete()
-  }
+	/**
+	 * Closes the overlay. You can optionally provide a result.
+	 */
+	public close(result?: any) {
+		this.overlayRef.dispose()
+		this.afterClosedSubject.next(result)
+		this.afterClosedSubject.complete()
+	}
 
-  /**
-   * An Observable that notifies when the overlay has closed
-   */
-  public afterClosed(): Observable<any> {
-    return this.afterClosedSubject.asObservable()
-  }
+	/**
+	 * An Observable that notifies when the overlay has closed
+	 */
+	public afterClosed(): Observable<any> {
+		return this.afterClosedSubject.asObservable()
+	}
 }

@@ -1,29 +1,20 @@
-import {
-  Controller,
-  Get,
-  HttpException,
-  HttpStatus,
-  Req,
-  Res,
-  UseGuards
-} from '@nestjs/common'
-import { AuthGuard } from '@nestjs/passport'
-import { Request, Response } from 'express'
-import { AuthService } from './auth.service'
+import { Controller, Get, HttpException, HttpStatus, Req, Res } from "@nestjs/common"
+import type { Request, Response } from "express"
+import type { AuthService } from "./auth.service"
 
-@Controller('auth')
+@Controller("auth")
 export class AuthController {
-  constructor(private authService: AuthService) {}
+	constructor(private authService: AuthService) {}
 
-  @Get('')
-  async validate(@Req() req: Request, @Res() res: Response) {
-    const authToken = req.cookies.auth_token
-    if (authToken) {
-      const user = await this.authService.validate(authToken)
+	@Get("")
+	async validate(@Req() req: Request, @Res() res: Response) {
+		const authToken = req.cookies.auth_token
+		if (authToken) {
+			const user = await this.authService.validate(authToken)
 
-      res.send(user)
-    } else {
-      throw new HttpException('Forbidden', HttpStatus.FORBIDDEN)
-    }
-  }
+			res.send(user)
+		} else {
+			throw new HttpException("Forbidden", HttpStatus.FORBIDDEN)
+		}
+	}
 }
