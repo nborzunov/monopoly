@@ -35,8 +35,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: Client Install dependencies
-        working-directory: ./client
+
+      - name: Root Install dependencies
         run: npm ci
 
       - name: Client Install dependencies
