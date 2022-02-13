@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core"
 	providedIn: "root",
 })
 export class ApiService {
-	baseUrl = "http://localhost:7000"
+	baseUrl = process.env["BACKEND_URL"]
 
 	constructor(private http: HttpClient) {}
 
