@@ -65,6 +65,6 @@ export class GoogleApiController {
 			secure: false,
 		})
 
-		res.redirect("http://localhost:4200")
+		res.redirect("http://localhost:7000")
 	}
 }

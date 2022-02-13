@@ -20,7 +20,7 @@
 		"app:lint": "npm run client:lint && npm run server:lint",
 		"app:all": "npm run client:all && npm run server:all",
 		"app:all-quiet": "npm run client:all-quiet && npm run server:all-quiet",
-		"start": "npm run build --prefix ./server"
+		"start:prod": "npm run build --prefix ./server"
 	},
 	"repository": {
 		"type": "git",
