@@ -3,10 +3,10 @@ import { modalAnimation } from "app/constants/animations.constants"
 import { currentLang, lang } from "app/constants/lang.constants"
 import { LEAVE_GAME_DIALOG_DATA } from "app/constants/tokens"
 import { DialogComponent } from "app/core/components/dialog/dialog.component"
-import type { DialogRef } from "app/core/services/dialog-ref"
-import type { DialogService } from "app/core/services/dialog.service"
-import type { GamesService } from "app/core/services/games.service"
-import type { LeaveGameDialogData } from "app/types/dialogs.types"
+import { DialogRef } from "app/core/services/dialog-ref"
+import { DialogService } from "app/core/services/dialog.service"
+import { GamesService } from "app/core/services/games.service"
+import { LeaveGameDialogData } from "app/types/dialogs.types"
 
 @Component({
 	selector: "app-leave-game-dialog",

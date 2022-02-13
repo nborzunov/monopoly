@@ -6,10 +6,10 @@ import { GameModes, PLAYER_LIMITS } from "app/constants/game.constants"
 import { currentLang, lang } from "app/constants/lang.constants"
 import { CREATE_GAME_DIALOG_DATA } from "app/constants/tokens"
 import { DialogComponent } from "app/core/components/dialog/dialog.component"
-import type { DialogRef } from "app/core/services/dialog-ref"
-import type { DialogService } from "app/core/services/dialog.service"
-import type { GamesService } from "app/core/services/games.service"
-import type { DialogData } from "app/types/dialogs.types"
+import { DialogRef } from "app/core/services/dialog-ref"
+import { DialogService } from "app/core/services/dialog.service"
+import { GamesService } from "app/core/services/games.service"
+import { DialogData } from "app/types/dialogs.types"
 
 @Component({
 	selector: "app-create-game-dialog",

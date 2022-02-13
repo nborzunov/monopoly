@@ -1,7 +1,7 @@
-import type { Overlay, OverlayConfig, OverlayOutsideClickDispatcher, OverlayRef } from "@angular/cdk/overlay"
+import { Overlay, OverlayConfig, OverlayOutsideClickDispatcher, OverlayRef } from "@angular/cdk/overlay"
 import { GlobalPositionStrategy } from "@angular/cdk/overlay"
 import { ComponentPortal } from "@angular/cdk/portal"
-import type { InjectionToken } from "@angular/core"
+import { InjectionToken } from "@angular/core"
 import { Injectable, Injector } from "@angular/core"
 import { DialogRef } from "./dialog-ref"
 

@@ -1,4 +1,4 @@
-import type { Subject } from "rxjs"
+import { Subject } from "rxjs"
 
 export interface DialogData {
 	outsidePointerEvents: Subject<Event>

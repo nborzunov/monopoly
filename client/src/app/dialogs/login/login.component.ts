@@ -3,9 +3,9 @@ import { modalAnimation } from "app/constants/animations.constants"
 import { currentLang, lang } from "app/constants/lang.constants"
 import { LOGIN_DIALOG_DATA } from "app/constants/tokens"
 import { DialogComponent } from "app/core/components/dialog/dialog.component"
-import type { DialogRef } from "app/core/services/dialog-ref"
-import type { DialogService } from "app/core/services/dialog.service"
-import type { DialogData } from "app/types/dialogs.types"
+import { DialogRef } from "app/core/services/dialog-ref"
+import { DialogService } from "app/core/services/dialog.service"
+import { DialogData } from "app/types/dialogs.types"
 
 @Component({
 	selector: "dialog-login",

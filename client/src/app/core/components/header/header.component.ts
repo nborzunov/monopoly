@@ -1,9 +1,9 @@
 import { Component } from "@angular/core"
 import { currentLang, lang } from "app/constants/lang.constants"
 import { LOGIN_DIALOG_DATA } from "app/constants/tokens"
-import type { DialogService } from "app/core/services/dialog.service"
+import { DialogService } from "app/core/services/dialog.service"
 import { LoginComponent } from "app/dialogs/login/login.component"
-import type { AuthService } from "app/shared/services/auth.service"
+import { AuthService } from "app/shared/services/auth.service"
 
 @Component({
 	selector: "app-header",

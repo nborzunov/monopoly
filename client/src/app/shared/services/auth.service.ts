@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core"
-import type { CookieService } from "ngx-cookie-service"
+import { CookieService } from "ngx-cookie-service"
 import { BehaviorSubject } from "rxjs"
-import type { ApiService } from "./api.service"
+import { ApiService } from "./api.service"
 
 @Injectable({
 	providedIn: "root",

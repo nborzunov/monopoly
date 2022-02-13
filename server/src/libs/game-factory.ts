@@ -1,4 +1,4 @@
-import type { GameParams } from "src/types/game"
+import { GameParams } from "src/types/game"
 import { CasualGame, QuickGame, RankedGame } from "./game"
 
 export class GameFactory {

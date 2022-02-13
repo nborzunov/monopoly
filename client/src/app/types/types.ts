@@ -1,4 +1,4 @@
-import type { GAME_MODES } from "./enums"
+import { GAME_MODES } from "./enums"
 
 export interface Player {
 	id: string

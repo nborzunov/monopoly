@@ -1,6 +1,6 @@
 import { forwardRef, Inject, Injectable } from "@nestjs/common"
-import type { JwtService } from "@nestjs/jwt"
-import type { API_SOURCE } from "src/constants/enums"
+import { JwtService } from "@nestjs/jwt"
+import { API_SOURCE } from "src/constants/enums"
 import { UsersService } from "src/users/users.service"
 
 @Injectable()

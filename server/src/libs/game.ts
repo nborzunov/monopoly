@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid"
-import type { GameOptions, GameParams } from "src/types/game"
+import { GameOptions, GameParams } from "src/types/game"
 
 export class Game {
 	id: string

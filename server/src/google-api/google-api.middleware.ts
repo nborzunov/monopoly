@@ -1,7 +1,7 @@
-import type { NestMiddleware } from "@nestjs/common"
+import { NestMiddleware } from "@nestjs/common"
 import { Injectable } from "@nestjs/common"
-import type { NextFunction, Request, Response } from "express"
-import type { AuthService } from "src/auth/auth.service"
+import { NextFunction, Request, Response } from "express"
+import { AuthService } from "src/auth/auth.service"
 
 @Injectable()
 export class GoogleApiMiddleware implements NestMiddleware {

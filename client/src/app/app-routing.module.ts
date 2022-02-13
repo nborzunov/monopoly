@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core"
-import type { Routes } from "@angular/router"
+import { Routes } from "@angular/router"
 import { RouterModule } from "@angular/router"
 import { SearchPageComponent } from "./search/components/search-page/search-page.component"
 

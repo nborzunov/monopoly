@@ -9,7 +9,7 @@ import { HttpClientModule } from "@angular/common/http"
 import { RouterModule } from "@angular/router"
 import { BlockUIModule } from "ng-block-ui"
 import { SearchModule } from "./search/search.module"
-import type { SocketIoConfig } from "ngx-socket-io"
+import { SocketIoConfig } from "ngx-socket-io"
 import { SocketIoModule } from "ngx-socket-io"
 import { CookieService } from "ngx-cookie-service"
 

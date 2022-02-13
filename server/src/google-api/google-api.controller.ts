@@ -1,10 +1,10 @@
 import { Controller, Get, Req, Res } from "@nestjs/common"
-import type { JwtService } from "@nestjs/jwt"
+import { JwtService } from "@nestjs/jwt"
 import axios from "axios"
-import type { Request, Response } from "express"
-import type { AuthService } from "src/auth/auth.service"
+import { Request, Response } from "express"
+import { AuthService } from "src/auth/auth.service"
 import { API_SOURCE } from "src/constants/enums"
-import type { GoogleApiService } from "./google-api.service"
+import { GoogleApiService } from "./google-api.service"
 
 @Controller("google")
 export class GoogleApiController {

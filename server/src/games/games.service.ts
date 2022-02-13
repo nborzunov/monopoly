@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common"
-import type { Socket } from "socket.io"
+import { Socket } from "socket.io"
 import { WsException } from "@nestjs/websockets"
-import type { AuthService } from "src/auth/auth.service"
-import type { Game } from "src/libs/game"
+import { AuthService } from "src/auth/auth.service"
+import { Game } from "src/libs/game"
 import { GameFactory } from "src/libs/game-factory"
 
 let games: Game[] = [

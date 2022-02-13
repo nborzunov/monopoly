@@ -1,8 +1,8 @@
-import type { OnInit } from "@angular/core"
+import { OnInit } from "@angular/core"
 import { Component } from "@angular/core"
-import type { DialogRef } from "app/core/services/dialog-ref"
-import type { DialogService } from "app/core/services/dialog.service"
-import type { DialogData } from "app/types/dialogs.types"
+import { DialogRef } from "app/core/services/dialog-ref"
+import { DialogService } from "app/core/services/dialog.service"
+import { DialogData } from "app/types/dialogs.types"
 
 @Component({
 	selector: "app-dialog",

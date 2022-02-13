@@ -1,6 +1,6 @@
 import { Socket } from "ngx-socket-io"
 import { Injectable } from "@angular/core"
-import type { AuthService } from "app/shared/services/auth.service"
+import { AuthService } from "app/shared/services/auth.service"
 
 @Injectable()
 export class GamesService extends Socket {

@@ -1,7 +1,7 @@
 import { forwardRef, Inject, Injectable } from "@nestjs/common"
 import { AuthService } from "src/auth/auth.service"
-import type { API_SOURCE } from "src/constants/enums"
-import type { User } from "./users.model"
+import { API_SOURCE } from "src/constants/enums"
+import { User } from "./users.model"
 
 @Injectable()
 export class UsersService {

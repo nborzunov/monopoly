@@ -1,7 +1,7 @@
-import type { OnGatewayConnection, OnGatewayDisconnect } from "@nestjs/websockets"
+import { OnGatewayConnection, OnGatewayDisconnect } from "@nestjs/websockets"
 import { ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway, WebSocketServer } from "@nestjs/websockets"
-import type { GamesService } from "./games.service"
-import type { Server, Socket } from "socket.io"
+import { GamesService } from "./games.service"
+import { Server, Socket } from "socket.io"
 
 @WebSocketGateway(80)
 export class GamesGateway implements OnGatewayConnection, OnGatewayDisconnect {

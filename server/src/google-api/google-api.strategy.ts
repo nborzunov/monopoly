@@ -1,5 +1,5 @@
 import { PassportStrategy } from "@nestjs/passport"
-import type { VerifyCallback } from "passport-google-oauth20"
+import { VerifyCallback } from "passport-google-oauth20"
 import { Strategy } from "passport-google-oauth20"
 import { config } from "dotenv"
 

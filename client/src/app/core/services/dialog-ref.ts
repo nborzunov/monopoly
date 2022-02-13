@@ -1,6 +1,6 @@
-import type { OverlayRef } from "@angular/cdk/overlay"
+import { OverlayRef } from "@angular/cdk/overlay"
 import { Injectable } from "@angular/core"
-import type { Observable } from "rxjs"
+import { Observable } from "rxjs"
 import { Subject } from "rxjs"
 
 /**
