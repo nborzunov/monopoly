@@ -51,5 +51,5 @@ jobs:
         run: npm ci
 
       - name: Check linters
-        run: npm run app:all
+        run: npm run app:all-quiet
 

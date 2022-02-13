@@ -2,8 +2,8 @@ import { Injectable } from "@nestjs/common"
 import type { Socket } from "socket.io"
 import { WsException } from "@nestjs/websockets"
 import type { AuthService } from "src/auth/auth.service"
-import type { Game} from "src/libs/game";
-import { GameFactory } from "src/libs/game-factory";
+import type { Game } from "src/libs/game"
+import { GameFactory } from "src/libs/game-factory"
 
 let games: Game[] = [
 	// TODO: Mocked data, remove when implement game engine

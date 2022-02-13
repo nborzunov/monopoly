@@ -1,4 +1,4 @@
-import type { MiddlewareConsumer, NestModule} from "@nestjs/common";
+import type { MiddlewareConsumer, NestModule } from "@nestjs/common"
 import { Module, RequestMethod } from "@nestjs/common"
 import { UsersModule } from "./users/users.module"
 import { ConfigModule } from "@nestjs/config"
