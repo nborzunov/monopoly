@@ -39,6 +39,9 @@ jobs:
       - name: Root Install dependencies
         run: npm ci
 
+      - name: Install typescript
+        run: npm install --save typescript
+
       - name: Client Install dependencies
         working-directory: ./client
         run: npm ci
