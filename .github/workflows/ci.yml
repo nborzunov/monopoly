@@ -47,7 +47,6 @@ jobs:
         working-directory: ./server
         run: npm ci
 
-
-      - name: Server Install dependencies
-        run: npm app:all
+      - name: Check linters
+        run: npm run app:all
 
