@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"scripts": {
 		"start": "cross-env NODE_ENV=development nest start --watch",
+    "build": "cross-env NODE_ENV=production nest build",
 		"prebuild": "rimraf dist",
 		"start:dev": "nest start --watch",
 		"start:debug": "nest start --debug --watch",
@@ -12,11 +13,7 @@
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
 		"test:e2e": "jest --config ./test/jest-e2e.json",
 		"lint": "eslint -c ../.eslintrc.json \"{src,apps,libs,test}/**/*.ts\" --fix",
-		"lint:quiet": "eslint -c ../.eslintrc.json \"{src,apps,libs,test}/**/*.ts\" --fix --quiet",
-    "build": "tsc -p tsconfig.build.json",
-    "prestart:prod": "rimraf dist && npm run build",
-    "postinstall": "npm run prestart:prod",
-    "start:prod": "node dist/main.js"
+		"lint:quiet": "eslint -c ../.eslintrc.json \"{src,apps,libs,test}/**/*.ts\" --fix --quiet"
 	},
 	"dependencies": {
 		"@nestjs/common": "^8.0.0",
