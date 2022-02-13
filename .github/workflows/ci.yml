@@ -35,18 +35,21 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
+
+      - name: Root Install dependencies
+        run: npm ci
+
+      - name: Install typescript
+        run: npm install --save typescript
+
       - name: Client Install dependencies
         working-directory: ./client
         run: npm ci
-
-      - name: Client Run lint
-        working-directory: ./client
-        run: npm run style:all
 
       - name: Server Install dependencies
         working-directory: ./server
         run: npm ci
 
-      - name: Server Run lint
-        working-directory: ./server
-        run: npm run style:all
+      - name: Check linters
+        run: npm run app:all-quiet
+

@@ -1,16 +1,17 @@
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
-import { RulesComponent } from './pages/rules/rules.component'
+import { NgModule } from "@angular/core"
+import type { Routes } from "@angular/router"
+import { RouterModule } from "@angular/router"
+import { SearchPageComponent } from "./search/components/search-page/search-page.component"
 
 const routes: Routes = [
-  {
-    path: 'rules',
-    component: RulesComponent
-  }
+	{
+		path: "search",
+		component: SearchPageComponent,
+	},
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
 export class AppRoutingModule {}

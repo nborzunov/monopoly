@@ -1,0 +1,28 @@
+.toggle-bg:after {
+  content: '';
+  @apply absolute top-0.5 left-0.5 bg-white border border-gray-300 rounded-full h-5 w-5 transition shadow-sm;
+}
+
+.toggle-bg {
+  @apply bg-gray-200 border-2 border-gray-200 h-6 w-11 rounded-full;
+}
+
+input:checked + .toggle-bg:after {
+  transform: translateX(100%);
+  @apply border-white;
+}
+
+input:checked + .toggle-bg {
+  @apply bg-green-600 border-green-600;
+}
+
+input:disabled + .toggle-bg {
+  @apply opacity-60 cursor-auto;
+}
+
+.player-limit-control {
+    @apply text-white font-semibold bg-gray-300 duration-200 min-w-[24px] p-1 w-auto rounded-md align-middle mx-[2px] hover:opacity-80 disabled:text-gray-700 disabled:cursor-not-allowed;
+    &--active {
+        @apply bg-green-500;
+    }
+}

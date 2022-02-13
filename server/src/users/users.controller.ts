@@ -1,6 +1,4 @@
-import { Controller, Get } from '@nestjs/common'
+import { Controller } from "@nestjs/common"
 
-@Controller('users')
-export class UsersController {
-  getUserData() {}
-}
+@Controller("users")
+export class UsersController {}
