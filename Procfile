@@ -1,1 +1,1 @@
-web: npm run build --prefix ./server
+web: npm run build

@@ -19,7 +19,8 @@
 		"app:check": "npm run client:check && npm run server:check",
 		"app:lint": "npm run client:lint && npm run server:lint",
 		"app:all": "npm run client:all && npm run server:all",
-		"app:all-quiet": "npm run client:all-quiet && npm run server:all-quiet"
+		"app:all-quiet": "npm run client:all-quiet && npm run server:all-quiet",
+		"build": "npm run build --prefix ./server"
 	},
 	"repository": {
 		"type": "git",
