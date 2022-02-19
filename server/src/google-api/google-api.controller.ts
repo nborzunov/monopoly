@@ -15,23 +15,12 @@ export class GoogleApiController {
 	) {}
 
 	@Get()
-	async googleAuth(@Req() req: Request, @Res() res: Response) {
+	async googleAuth(@Res() res: Response) {
 		res.redirect(this.googleApiService.getGoogleAuthURL())
 	}
 
 	@Get("redirect")
 	async googleAuthRedirect(@Req() req: Request, @Res() res: Response) {
-		// let authData = this.googleApiService.googleLogin(req)
-
-		// if (typeof authData !== 'string' && authData?.user) {
-		//   console.log(authData.user.accessToken)
-		//   let data = await this.authService.login(authData.user.email, API_SOURCE.GOOGLE, authData.user.accessToken)
-
-		//   res.cookie("auth_token", data.access_token)
-		// }
-
-		// res.redirect('http://localhost:4200')
-
 		const code = req.query.code
 
 		const { id_token: idToken, access_token: accessToken } = await this.googleApiService.getTokens({
@@ -60,11 +49,12 @@ export class GoogleApiController {
 		})
 
 		res.cookie("auth_token", token, {
-			maxAge: 900000,
+			maxAge: 1000 * 60 * 60 * 24 * 7,
 			httpOnly: false,
 			secure: false,
 		})
 
+		console.log(process.env.NODE_ENV)
 		res.redirect(
 			process.env.NODE_ENV === "production" ? "https://tydusgg-monopoly.herokuapp.com/" : "http://localhost:4200",
 		)
