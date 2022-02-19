@@ -17,6 +17,10 @@ async function bootstrap() {
 
 	app.use(cookieParser())
 
+	if (process.env.NODE_ENV === "production") {
+		app.setGlobalPrefix("api")
+	}
+
 	const PORT = process.env.PORT || 5000
 
 	await app.listen(PORT, () => console.log("Server started at port ", PORT))
