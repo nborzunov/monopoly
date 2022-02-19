@@ -10,27 +10,24 @@
 		"client:lint-quiet": "npm run lint:quiet --prefix ./client",
 		"client:all": "npm run client:check && npm run client:lint",
 		"client:all-quiet": "npm run client:check && npm run client:lint-quiet",
-
 		"server:format": "prettier --config ./.prettierrc.json --write \"./server/**/*.{js,jsx,ts,tsx}\"",
 		"server:check": "prettier --config ./.prettierrc.json --check \"./server/**/*.{js,jsx,ts,tsx}\"",
 		"server:lint": "npm run lint --prefix ./server",
 		"server:lint-quiet": "npm run lint:quiet --prefix ./server",
 		"server:all": "npm run server:check && npm run server:lint",
 		"server:all-quiet": "npm run server:check && npm run server:lint-quiet",
-
 		"app:format": "npm run client:format && npm run server:format",
 		"app:check": "npm run client:check && npm run server:check",
 		"app:lint": "npm run client:lint && npm run server:lint",
 		"app:all": "npm run client:all && npm run server:all",
 		"app:all-quiet": "npm run client:all-quiet && npm run server:all-quiet",
-
 		"bootstrap": "lerna bootstrap",
 		"clean": "lerna clean",
 		"build-ts": "lerna run build-ts",
 		"lint": "lerna run lint",
 		"postinstall": "npm run bootstrap && npm run build-ts",
 		"test": "lerna run test",
-		"build": "yarn bootstrap && yarn --cwd ./client build && yarn --cwd ./server build"
+		"build": "npm run build --prefix ./client && npm run build --prefix ./server"
 	},
 	"repository": {
 		"type": "git",
