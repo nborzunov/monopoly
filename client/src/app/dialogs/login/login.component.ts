@@ -28,6 +28,6 @@ export class LoginComponent extends DialogComponent {
 	}
 
 	getGoogleAuthUrl() {
-		window.location.href = "http://localhost:7000/google"
+		window.location.href = "/api/google"
 	}
 }
