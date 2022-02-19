@@ -13,7 +13,7 @@ import { SocketIoConfig } from "ngx-socket-io"
 import { SocketIoModule } from "ngx-socket-io"
 import { CookieService } from "ngx-cookie-service"
 
-const config: SocketIoConfig = { url: "http://localhost:80", options: {} }
+const config: SocketIoConfig = { url: "http://localhost:3222", options: {} }
 
 @NgModule({
 	declarations: [AppComponent],

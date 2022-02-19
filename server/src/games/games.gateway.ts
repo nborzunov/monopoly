@@ -3,7 +3,7 @@ import { ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway, WebSo
 import { GamesService } from "./games.service"
 import { Server, Socket } from "socket.io"
 
-@WebSocketGateway(80)
+@WebSocketGateway(3222, { transports: ["websocket"] })
 export class GamesGateway implements OnGatewayConnection, OnGatewayDisconnect {
 	@WebSocketServer()
 	server: Server
