@@ -9,6 +9,8 @@ import { GoogleApiMiddleware } from "./google-api/google-api.middleware"
 import { GamesModule } from "./games/games.module"
 import { ServeStaticModule } from "@nestjs/serve-static"
 import { join } from "path"
+
+console.log(`${process.env.NODE_ENV}.env`)
 @Module({
 	imports: [
 		ConfigModule.forRoot({
