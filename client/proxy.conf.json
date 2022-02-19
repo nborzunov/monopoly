@@ -1,11 +1,13 @@
 {
-  "/api/*": {
-    "target": "http://localhost:7000",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true,
-    "pathRewrite": {
-      "^/api": ""
-    }
+	"/api": {
+		"target": "http://localhost:7000",
+		"secure": false
+	},
+  "/socket": {
+		"target:": "http://localhost:3222",
+		"secure": false,
+		"pathRewrite": {
+			"^/socket": ""
+		}
   }
 }

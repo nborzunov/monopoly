@@ -20,10 +20,12 @@ import { join } from "path"
 		GoogleApiModule,
 		AuthModule,
 		GamesModule,
-		ServeStaticModule.forRoot({
-			rootPath: join(__dirname, "../../client/dist/client"),
-		}),
-	],
+		process.env.NODE_ENV === "production"
+			? ServeStaticModule.forRoot({
+					rootPath: join(__dirname, "../../client/dist/client"),
+			  })
+			: undefined,
+	].filter(Boolean),
 	controllers: [],
 	providers: [],
 })
