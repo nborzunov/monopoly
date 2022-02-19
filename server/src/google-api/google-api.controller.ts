@@ -65,6 +65,6 @@ export class GoogleApiController {
 			secure: false,
 		})
 
-		res.redirect("http://localhost:7000")
+		res.redirect(process.env.NODE_ENV === "production" ? "http://localhost:7000" : "http://localhost:4200")
 	}
 }

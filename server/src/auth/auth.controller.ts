@@ -6,7 +6,7 @@ import { AuthService } from "./auth.service"
 export class AuthController {
 	constructor(private authService: AuthService) {}
 
-	@Get("")
+	@Get()
 	async validate(@Req() req: Request, @Res() res: Response) {
 		const authToken = req.cookies.auth_token
 		if (authToken) {
