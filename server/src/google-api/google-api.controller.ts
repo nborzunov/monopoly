@@ -1,4 +1,4 @@
-import { Controller, Get, Req, Res } from "@nestjs/common"
+import { Controller, Get, Query, Req, Res } from "@nestjs/common"
 import { JwtService } from "@nestjs/jwt"
 import axios from "axios"
 import { Request, Response } from "express"
@@ -15,8 +15,13 @@ export class GoogleApiController {
 	) {}
 
 	@Get()
-	async googleAuth(@Res() res: Response) {
-		res.redirect(this.googleApiService.getGoogleAuthURL())
+	async googleAuth(@Req() req: Request, @Res() res: Response, @Query("from") from) {
+		const url = this.googleApiService.getGoogleAuthURL()
+
+		res.cookie("from", from)
+		res.status(200).send({
+			url: url,
+		})
 	}
 
 	@Get("redirect")
@@ -54,10 +59,6 @@ export class GoogleApiController {
 			secure: false,
 		})
 
-		console.log(process.env.NODE_ENV)
-		res.redirect("https://tydusgg-monopoly.herokuapp.com/")
-		// res.redirect(
-		// 	process.env.NODE_ENV === "production" ? "https://tydusgg-monopoly.herokuapp.com/" : "http://localhost:4200",
-		// )
+		res.redirect(req.cookies.from)
 	}
 }

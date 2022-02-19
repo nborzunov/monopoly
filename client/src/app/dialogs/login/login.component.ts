@@ -5,6 +5,7 @@ import { LOGIN_DIALOG_DATA } from "app/constants/tokens"
 import { DialogComponent } from "app/core/components/dialog/dialog.component"
 import { DialogRef } from "app/core/services/dialog-ref"
 import { DialogService } from "app/core/services/dialog.service"
+import { ApiService } from "app/shared/services/api.service"
 import { DialogData } from "app/types/dialogs.types"
 
 @Component({
@@ -22,6 +23,7 @@ export class LoginComponent extends DialogComponent {
 		@Optional()
 		@Inject(LOGIN_DIALOG_DATA)
 		public override dialogData: DialogData,
+		public apiService: ApiService,
 	) {
 		super(dialogRef, dialogService)
 		super.ngOnInit()
@@ -29,6 +31,12 @@ export class LoginComponent extends DialogComponent {
 	}
 
 	getGoogleAuthUrl() {
-		window.location.href = "/api/google"
+		try {
+			this.apiService.getGoogleTemplate().subscribe((data: any) => {
+				window.location.href = data.url
+			})
+		} catch (err: any) {
+			console.log(err.message)
+		}
 	}
 }

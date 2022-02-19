@@ -7,6 +7,14 @@ import { Injectable } from "@angular/core"
 export class ApiService {
 	constructor(private http: HttpClient) {}
 
+	getGoogleTemplate() {
+		return this.http.get("/api/google", {
+			params: {
+				from: window.location.href,
+			},
+		})
+	}
+
 	checkValidation() {
 		return this.http.get("/api/auth")
 	}
