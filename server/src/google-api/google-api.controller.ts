@@ -16,7 +16,6 @@ export class GoogleApiController {
 
 	@Get()
 	async googleAuth(@Req() req: Request, @Res() res: Response) {
-		res.cookie("from", req.query.from)
 		res.redirect(this.googleApiService.getGoogleAuthURL())
 	}
 
@@ -66,6 +65,8 @@ export class GoogleApiController {
 			secure: false,
 		})
 
-		res.redirect(req.cookies.from)
+		res.redirect(
+			process.env.NODE_ENV === "production" ? "https://tydusgg-monopoly.herokuapp.com/" : "http://localhost:4200",
+		)
 	}
 }

@@ -29,6 +29,6 @@ export class LoginComponent extends DialogComponent {
 	}
 
 	getGoogleAuthUrl() {
-		window.location.href = `/api/google?from=${encodeURIComponent(window.location.href)}`
+		window.location.href = "/api/google"
 	}
 }
