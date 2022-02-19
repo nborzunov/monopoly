@@ -55,8 +55,9 @@ export class GoogleApiController {
 		})
 
 		console.log(process.env.NODE_ENV)
-		res.redirect(
-			process.env.NODE_ENV === "production" ? "https://tydusgg-monopoly.herokuapp.com/" : "http://localhost:4200",
-		)
+		res.redirect("https://tydusgg-monopoly.herokuapp.com/")
+		// res.redirect(
+		// 	process.env.NODE_ENV === "production" ? "https://tydusgg-monopoly.herokuapp.com/" : "http://localhost:4200",
+		// )
 	}
 }
