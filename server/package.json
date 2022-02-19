@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"scripts": {
 		"start": "cross-env NODE_ENV=development nest start --watch",
-		"build": "nest build",
+		"build": "nest build && node dist/main",
 		"prebuild": "rimraf dist",
 		"start:dev": "nest start --watch",
 		"start:debug": "nest start --debug --watch",
