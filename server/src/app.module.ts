@@ -20,7 +20,7 @@ import { join } from "path"
 		AuthModule,
 		GamesModule,
 		ServeStaticModule.forRoot({
-			rootPath: join(__dirname, "..", "client"),
+			rootPath: join(__dirname, "../../client/dist/client"),
 		}),
 	],
 	controllers: [],
