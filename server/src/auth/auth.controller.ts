@@ -12,6 +12,7 @@ export class AuthController {
 		if (authToken) {
 			const user = await this.authService.validate(authToken)
 
+			console.log(user)
 			res.send(user)
 		} else {
 			throw new HttpException("Forbidden", HttpStatus.FORBIDDEN)
