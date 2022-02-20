@@ -10,6 +10,9 @@ import { GamesModule } from "./games/games.module"
 import { ServeStaticModule } from "@nestjs/serve-static"
 import { join } from "path"
 
+process.env.BASE_URL =
+	process.env.NODE_ENV === "production" ? "https://tydusgg-monopoly.herokuapp.com/api" : "http://localhost:7000/api"
+
 @Module({
 	imports: [
 		ConfigModule.forRoot({

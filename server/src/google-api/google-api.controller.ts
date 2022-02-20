@@ -32,7 +32,7 @@ export class GoogleApiController {
 			code,
 			clientId: process.env.OAUTH_CLIENT_ID,
 			clientSecret: process.env.OAUTH_CLIENT_SECRET,
-			redirectUri: `http://localhost:7000/api/google/redirect`,
+			redirectUri: `${process.env.BASE_URL}/google/redirect`,
 		})
 
 		const googleUser = await axios
