@@ -27,7 +27,6 @@ export class LoginComponent extends DialogComponent {
 	) {
 		super(dialogRef, dialogService)
 		super.ngOnInit()
-		console.log(window.location)
 	}
 
 	getGoogleAuthUrl() {
