@@ -1,4 +1,4 @@
-import { Controller, Get, Req, Res } from "@nestjs/common"
+import { Controller, Get, Query, Req, Res } from "@nestjs/common"
 import { JwtService } from "@nestjs/jwt"
 import axios from "axios"
 import { Request, Response } from "express"
@@ -15,30 +15,24 @@ export class GoogleApiController {
 	) {}
 
 	@Get()
-	async googleAuth(@Req() req: Request, @Res() res: Response) {
-		res.redirect(this.googleApiService.getGoogleAuthURL())
+	async googleAuth(@Req() req: Request, @Res() res: Response, @Query("from") from) {
+		const url = this.googleApiService.getGoogleAuthURL()
+
+		res.cookie("from", from)
+		res.status(200).send({
+			url: url,
+		})
 	}
 
 	@Get("redirect")
 	async googleAuthRedirect(@Req() req: Request, @Res() res: Response) {
-		// let authData = this.googleApiService.googleLogin(req)
-
-		// if (typeof authData !== 'string' && authData?.user) {
-		//   console.log(authData.user.accessToken)
-		//   let data = await this.authService.login(authData.user.email, API_SOURCE.GOOGLE, authData.user.accessToken)
-
-		//   res.cookie("auth_token", data.access_token)
-		// }
-
-		// res.redirect('http://localhost:4200')
-
 		const code = req.query.code
 
 		const { id_token: idToken, access_token: accessToken } = await this.googleApiService.getTokens({
 			code,
 			clientId: process.env.OAUTH_CLIENT_ID,
 			clientSecret: process.env.OAUTH_CLIENT_SECRET,
-			redirectUri: `http://localhost:7000/google/redirect`,
+			redirectUri: `${process.env.BASE_URL}/google/redirect`,
 		})
 
 		const googleUser = await axios
@@ -60,11 +54,11 @@ export class GoogleApiController {
 		})
 
 		res.cookie("auth_token", token, {
-			maxAge: 900000,
+			maxAge: 1000 * 60 * 60 * 24 * 7,
 			httpOnly: false,
 			secure: false,
 		})
 
-		res.redirect("http://localhost:4200")
+		res.redirect(req.cookies.from)
 	}
 }

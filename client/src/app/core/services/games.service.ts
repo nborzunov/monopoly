@@ -6,7 +6,7 @@ import { AuthService } from "app/shared/services/auth.service"
 export class GamesService extends Socket {
 	constructor(private socket: Socket, private authService: AuthService) {
 		super({
-			url: "http://localhost:80",
+			url: "/socket",
 			options: {},
 		})
 

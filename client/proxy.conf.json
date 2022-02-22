@@ -1,11 +1,18 @@
 {
-  "/api/*": {
-    "target": "http://localhost:7000",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true,
-    "pathRewrite": {
-      "^/api": ""
-    }
-  }
+	"/api": {
+		"target": "http://localhost:7000",
+		"secure": false,
+		"changeOrigin": true
+	},
+	"/socket": {
+		"target:": "http://localhost:3222",
+		"secure": false,
+		"pathRewrite": {
+			"^/socket": ""
+		}
+	},
+	"https://accounts.google.com": {
+		"target": "https://accounts.google.com",
+		"secure": false
+	}
 }

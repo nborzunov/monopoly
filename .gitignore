@@ -11,3 +11,4 @@ client/dist
 # SERVER
 server/dist
 server/node_modules
+server/client

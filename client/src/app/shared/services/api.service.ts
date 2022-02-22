@@ -5,12 +5,14 @@ import { Injectable } from "@angular/core"
 	providedIn: "root",
 })
 export class ApiService {
-	baseUrl = process.env["BACKEND_URL"]
-
 	constructor(private http: HttpClient) {}
 
-	getGoogleSigninUrl() {
-		return this.http.get(`/api/google`)
+	getGoogleTemplate() {
+		return this.http.get("/api/google", {
+			params: {
+				from: window.location.href,
+			},
+		})
 	}
 
 	checkValidation() {

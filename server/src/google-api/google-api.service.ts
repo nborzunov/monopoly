@@ -7,7 +7,7 @@ export class GoogleApiService {
 	getGoogleAuthURL() {
 		const rootUrl = "https://accounts.google.com/o/oauth2/v2/auth"
 		const options = {
-			redirect_uri: `http://localhost:7000/google/redirect`,
+			redirect_uri: `${process.env.BASE_URL}/google/redirect`,
 			client_id: process.env.OAUTH_CLIENT_ID,
 			access_type: "offline",
 			response_type: "code",
