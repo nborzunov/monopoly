@@ -1,0 +1,190 @@
+<div class="relative w-[768px] min-h-[520px] py-4 px-5 md:px-10 bg-white rounded shadow-xl"
+     *ngIf="show"
+     [@inOutAnimation]>
+  <button class="dialog__close-button"
+          aria-label="close modal"
+          role="button"
+          (click)="closeDialog()"
+          id="close-button">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="icon icon-tabler icon-tabler-x"
+         width="20"
+         height="20"
+         viewBox="0 0 24 24"
+         stroke-width="2.5"
+         stroke="currentColor"
+         fill="none"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+      <path stroke="none"
+            d="M0 0h24v24H0z" />
+      <line x1="18"
+            y1="6"
+            x2="6"
+            y2="18" />
+      <line x1="6"
+            y1="6"
+            x2="18"
+            y2="18" />
+    </svg>
+  </button>
+
+  <div class="mb-3">
+    <h1 class="text-gray-800 text-2xl font-bold tracking-normal leading-tight my-4">
+      {{ lang.labels.CREATE_GAME }}
+    </h1>
+  </div>
+  <div class="mb-3 flex justify-center select-none">
+    <div class="w-2/5">
+      <div *ngFor="let gameMode of gameModes"
+           [ngClass]="
+          selectedGameMode === gameMode
+            ? gameModeColors[gameMode] + ' text-white hover:opacity-90'
+            : 'text-gray-900 hover:bg-gray-100'
+        "
+           class="py-2 px-4 rounded-lg min-h-[60px] max-h-[90px] my-4 cursor-pointer"
+           (click)="selectGameMode(gameMode)">
+        <div class="font-bold">{{ lang.labels.gameModeLabels[gameMode] }}</div>
+        <div class="font-semibold text-sm">
+          {{ lang.labels.additionalGameModeLabels[gameMode] }}
+        </div>
+      </div>
+    </div>
+
+    <div class="w-3/5">
+      <div class="my-4 ml-4 mr-2">
+        <h1 class="text-lg rounded-lg font-semibold pt-2">
+          {{ lang.labels.gameModeLabels[selectedGameMode] }}
+        </h1>
+        <div *ngIf="selectedGameMode === 'QUICK_GAME'">
+          <div>
+            {{ lang.labels.QUICK_GAME_LARGE_INFO }}
+          </div>
+
+          <div class="p-4 mt-4 rounded-lg bg-violet-500 text-white">
+            <div class="mb-4">
+              <div class="font-bold">{{ lang.labels.VIP_MODE_TITLE }}</div>
+              <div>
+                <div>{{ lang.labels.VIP_MODE_SUBTITLE }}</div>
+                <div class="mt-1">
+                  {{ lang.labels.VIP_MODE_SUBTITLE_ADDITIONAL }}
+                </div>
+              </div>
+            </div>
+            <shared-button size="sm"
+                           class="bg-white text-violet-500 font-semibold">
+              {{ lang.labels.GET_VIP }}
+            </shared-button>
+          </div>
+        </div>
+        <div *ngIf="selectedGameMode === 'RANKED_GAME'">
+          <div>
+            {{ lang.labels.RANKED_GAME_LARGE_INFO }}
+          </div>
+          <div class="p-4 mt-4 rounded-lg bg-red-500 text-white"
+               *ngIf="!rankedOpened">
+            <div class="font-bold">
+              {{ lang.labels.RANKED_CANT_PLAY }}
+            </div>
+            <div>
+              {{ lang.labels.RANKED_CANT_PLAY_ADDITIONAL }}
+              <span class="font-bold">{{
+                lang.labels.RANKED_ACCESS_LEVEL
+                }}</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="selectedGameMode === 'CASUAL_GAME'"
+             [formGroup]="casualGameFormGroup">
+          <div class="flex flex-col justify-end">
+            <div class="flex justify-between items-center mt-4">
+              <div>{{ lang.labels.PLAYERS }}</div>
+              <div>
+                <button *ngFor="let playerLimit of playerLimits"
+                        class="player-limit-control"
+                        [ngClass]="
+                    playersLimit === playerLimit
+                      ? 'player-limit-control--active'
+                      : ''
+                  "
+                        [disabled]="
+                    playerLimit === playerLimits[playerLimits.length - 1]
+                  "
+                        (click)="playersLimit = playerLimit">
+                  {{ lang.labels.playerLimitsLabels[playerLimit] }}
+                </button>
+              </div>
+            </div>
+            <div class="text-right text-sm pt-2 text-gray-500">
+              {{ lang.labels.MODE_IS_NOT_ALLOWED }}
+            </div>
+          </div>
+          <div>
+            <div class="text-lg mt-2">{{ lang.labels.ROOM_SETTINGS }}</div>
+            <div>
+              <div class="flex justify-between items-center mt-2">
+                <div [ngClass]="
+                    casualGameFormGroup.controls['roomPrivate'].disabled
+                      ? 'text-gray-400'
+                      : ''
+                  ">
+                  {{ lang.labels.ROOM_SETTINGS_PRIVATE }}
+                </div>
+                <div>
+                  <label class="flex items-center relative">
+                    <input type="checkbox"
+                           class="sr-only"
+                           formControlName="roomPrivate" />
+                    <div class="toggle-bg"></div>
+                  </label>
+                </div>
+              </div>
+              <div class="flex justify-between items-center mt-1">
+                <div [ngClass]="
+                    casualGameFormGroup.controls['roomAutoStart'].disabled
+                      ? 'text-gray-400'
+                      : ''
+                  ">
+                  {{ lang.labels.ROOM_SETTINGS_AUTOSTART }}
+                </div>
+                <div>
+                  <label class="flex items-center relative">
+                    <input type="checkbox"
+                           class="sr-only"
+                           formControlName="roomAutoStart" />
+                    <div class="toggle-bg"></div>
+                  </label>
+                </div>
+              </div>
+              <div></div>
+            </div>
+          </div>
+
+          <div class="p-4 mt-4 rounded-lg bg-violet-500 text-white">
+            <div class="mb-4">
+              <div class="font-bold">{{ lang.labels.VIP_SETTINGS_TITLE }}</div>
+              <div>
+                <div>{{ lang.labels.VIP_MODE_SUBTITLE }}</div>
+                <div class="mt-1">
+                  {{ lang.labels.VIP_MODE_SUBTITLE_ADDITIONAL }}
+                </div>
+              </div>
+            </div>
+            <shared-button size="sm"
+                           class="bg-white text-violet-500 font-semibold">
+              {{ lang.labels.GET_VIP }}
+            </shared-button>
+          </div>
+
+          <div class="mt-4 flex justify-center">
+            <shared-button size="sm"
+                           class="bg-gray-300 font-semibold rounded-lg text-white"
+                           (click)="createGame()">
+              {{ lang.labels.CREATE_ROOM }}
+            </shared-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

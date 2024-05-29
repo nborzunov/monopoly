@@ -1,0 +1,66 @@
+<div class="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400"
+     *ngIf="show"
+     [@inOutAnimation]>
+  <div class="mb-6">
+    <h1 class="text-gray-800 text-2xl font-bold tracking-normal leading-tight my-4">
+      {{ lang.labels.AUTHORIZATION }}
+    </h1>
+    <h2 class="text-gray-800 text-lg tracking-normal leading-tight my-4">
+      {{ lang.labels.CHOOSE_AUTHORIZATION_METHOD }}
+    </h2>
+  </div>
+
+  <div class="flex flex-row justify-between gap-6 w-full">
+    <shared-button variant="outline"
+                   backgroundColor="none"
+                   class="w-full"
+                   (click)="getGoogleAuthUrl()">
+      <div class="flex items-center">
+        <img src="assets/icons/google-login.svg"
+             class="w-8 mr-2" />
+        <span>
+          {{ lang.labels.GOOGLE }}
+        </span>
+      </div>
+    </shared-button>
+
+    <shared-button variant="outline"
+                   backgroundColor="none"
+                   class="w-full">
+      <div class="flex items-center">
+        <img src="assets/icons/vk-login.svg"
+             class="w-8 mr-2" />
+        <span>
+          {{ lang.labels.VKONTAKTE }}
+        </span>
+      </div>
+    </shared-button>
+  </div>
+  <button class="dialog__close-button"
+          aria-label="close modal"
+          role="button"
+          (click)="closeDialog()"
+          id="close-button">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="icon icon-tabler icon-tabler-x"
+         width="20"
+         height="20"
+         viewBox="0 0 24 24"
+         stroke-width="2.5"
+         stroke="currentColor"
+         fill="none"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+      <path stroke="none"
+            d="M0 0h24v24H0z" />
+      <line x1="18"
+            y1="6"
+            x2="6"
+            y2="18" />
+      <line x1="6"
+            y1="6"
+            x2="18"
+            y2="18" />
+    </svg>
+  </button>
+</div>

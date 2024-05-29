@@ -1,0 +1,14 @@
+
+
+# ENV
+.vscode
+node_modules
+
+# CLIENT
+client/.angular
+client/node_modules
+client/dist
+# SERVER
+server/dist
+server/node_modules
+server/client
